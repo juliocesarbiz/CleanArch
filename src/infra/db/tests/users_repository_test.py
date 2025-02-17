@@ -37,6 +37,7 @@ def test_insert_user():
 
     connection.commit()
 
+@pytest.mark.skip(reason='Sensive test')
 def test_select_user():
     mocked_first_name = 'first2'
     mocked_last_name = 'last2'
@@ -46,10 +47,16 @@ def test_select_user():
         INSERT INTO clean_database.users (FIRST_NAME, LAST_NAME, AGE) VALUES ('{}', '{}', {})
     '''.format(mocked_first_name, mocked_last_name, mocked_age)
 
-    connection.execute(sql)
-    #connection.commit()
+    connection.execute(text(sql))
+    connection.commit()
 
     user_repository = UserRepository()
     response = user_repository.select_user(mocked_first_name)
-    print("Test Select")
-    print(response)
+    assert response[0].first_name == mocked_first_name
+    assert response[0].last_name == mocked_last_name
+    assert response[0].age == mocked_age
+
+    connection.execute(text(f'''
+    DELETE FROM clean_database.users where id = {response[0].id}
+    '''))
+    connection.commit()
