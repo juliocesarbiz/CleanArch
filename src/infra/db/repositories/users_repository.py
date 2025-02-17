@@ -3,7 +3,7 @@ from src.infra.db.entities.users import Users as UsersEntity
 class UserRepository:
 
     @classmethod
-    def insert(cls, first_name: str, last_name: str, age: int) -> None:
+    def insert_user(cls, first_name: str, last_name: str, age: int) -> None:
         with DBConnectionHandler() as database:
             try:
                 new_registry = UsersEntity(
@@ -17,3 +17,17 @@ class UserRepository:
                 database.session.rollback()
                 raise exception
 
+    @classmethod
+    def select_user(cls, first_name: str) -> any:
+        with DBConnectionHandler() as database:
+            try:
+                users = (
+                    database.session
+                        .query(UsersEntity)
+                        .filter(UsersEntity.first_name == first_name)
+                        .all()
+                )
+                return users
+            except Exception as exception:
+                database.session.rollback()
+                raise exception
