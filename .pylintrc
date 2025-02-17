@@ -12,6 +12,8 @@ disable=
       C0115, # missing-class-docstring
       R0903, # too-few-public-methods
       w1203,
+      C0304, # Final newline missing
+      C0305, # Trailing newlines
 
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and
