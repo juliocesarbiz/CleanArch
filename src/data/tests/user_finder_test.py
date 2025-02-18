@@ -12,7 +12,7 @@ def test_find():
 
     assert response['type'] == 'Users'
     assert response['count'] == len(response['attributes'])
-    assert response['attributes']
+    assert response['attributes'] #  != []
 
 def test_find_error_in_valid_name():
     first_name = 'meuNome123'

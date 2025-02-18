@@ -5,7 +5,7 @@ from src.data.interfaces.users_repository import UserRepositoryInterface
 from src.domain.models.users import Users
 
 class UserRepository(UserRepositoryInterface):
-
+ 
     @classmethod
     def insert_user(cls, first_name: str, last_name: str, age: int) -> None:
         with DBConnectionHandler() as database:
