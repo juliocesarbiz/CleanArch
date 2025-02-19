@@ -7,8 +7,8 @@ class UserFinderController(ControllerInterface):
     def __init__(self, use_case: UserFinderInterface) -> None:
         self.__use_case = use_case
 
-    def handle_p (self, http_request: HttpRequest) -> HttpResponse: 
-        first_name = http_request.query_params.get['first_name']
+    def handle (self, http_request: HttpRequest) -> HttpResponse: 
+        first_name = http_request.query_params['first_name']
         response = self.__use_case.find(first_name)
     
         return HttpResponse(

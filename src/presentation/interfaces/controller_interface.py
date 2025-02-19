@@ -6,4 +6,4 @@ from src.presentation.http_types.http_response import HttpResponse
 class ControllerInterface(ABC):
 
     @abstractmethod
-    def handle(self, request: HttpRequest) -> HttpResponse: pass
+    def handle(self, http_request: HttpRequest) -> HttpResponse: pass
