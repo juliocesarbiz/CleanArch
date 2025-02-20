@@ -10,7 +10,7 @@ class UserRegisterController(ControllerInterface):
     def handle (self, http_request: HttpRequest) -> HttpResponse: 
         first_name = http_request.body['first_name']
         last_name = http_request.body['last_name']
-        age_name = http_request.body['age_name']
+        age_name = http_request.body['age']
 
 
         response = self.__use_case.register(first_name,last_name,age_name)
