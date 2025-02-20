@@ -8,11 +8,7 @@ class Groups(Base):
     description = Column(String, nullable=False)
     active_user = Column(String, nullable=False)
     user_comments = Column(String, nullable=True)
-
+    
     def __repr__(self):
-        return f'Groups [
-        id_group={self.id_group}, 
-        description={self.description}, 
-        active_user={self.active_user},
-        user_comments={self.user_comments}
-        ]'
+        return ('Groups [id_group={}, description={}, active_user={}, user_comments={}]'
+            .format(self.id_group, self.description, self.active_user, self.user_comments))
