@@ -5,8 +5,8 @@ class Users(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    first_name = Column(String, nullable=False)
-    last_name = Column(String, nullable=False)
+    first_name = Column(String(50), nullable=False)
+    last_name = Column(String(50), nullable=False)
     age = Column(Integer, nullable=False)
 
     def __repr__(self):

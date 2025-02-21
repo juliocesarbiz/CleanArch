@@ -1,0 +1,5 @@
+alembic init src/infra/db/migrations
+
+alembic revision --autogenerate -m "Initial migration db conection"
+
+alembic upgrade head
